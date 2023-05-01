@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapidockerkubernetes-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restapidockerkubernetes
+  template:
+    metadata:
+      labels:
+        app: restapidockerkubernetes
+    spec:
+      containers:
+        - name: restapidockerkubernetes-container
+          image: beingsujeetk/restapidockerkubernetes:1.0
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+            requests:
+              cpu: "0.5"
+              memory: "256Mi"
+          ports:
+            - containerPort: 8080
